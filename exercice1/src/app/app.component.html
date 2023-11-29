@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <label class="form-label">Prix des achats séparer d'une virgule</label>
+      <div class="input-group">
+        <input type="text" [(ngModel)]="shoppingInput" class="form-control" [ngModelOptions]="{standalone: true}">
+        <button class="btn btn-primary" (click)="calculateTotal()">Calculer</button>
+      </div>
+
+      <hr />
+
+      <p>Somme à payer par le client
+        <strong *ngIf="total !== null">{{ total }}</strong>
+      </p>
+
+      <hr />
+
+      <label class="form-label">Somme versé par le client</label>
+      <div class="input-group">
+        <input type="text" [(ngModel)]="amountPaid" class="form-control" [ngModelOptions]="{standalone: true}">
+        <button class="btn btn-primary" (click)="calculateChangeDue()">Calculer</button>
+      </div>
+
+      <hr />
+
+      <p>Monnaie à rendre au client
+        <strong *ngIf="due !== null">{{ due }}</strong>
+      </p>
+
+      <hr />
+
+      <div *ngFor="let nrbDue of changeDue.keys()">
+        <p><strong>{{ changeDue.get(nrbDue) }} fois {{ nrbDue }} </strong></p>
+      </div>
+    </div>
+  </div>
+</div>
